@@ -1,0 +1,51 @@
+<web-app version="6.0"
+	xmlns="https://jakarta.ee/xml/ns/jakartaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd">
+	
+	<servlet>
+		<servlet-name>jakarta.ws.rs.core.Application</servlet-name>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>jakarta.ws.rs.core.Application</servlet-name>
+		<url-pattern>/api/*</url-pattern>
+	</servlet-mapping>
+	
+	<!-- Restricción de seguridad para la URL /api/* -->
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>API autenticada</web-resource-name>
+        <url-pattern>/api/gerente</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>gerente</role-name>
+    </auth-constraint>
+</security-constraint>
+
+<security-constraint>
+    <web-resource-collection>
+        <web-resource-name>API autenticada</web-resource-name>
+        <url-pattern>/api/recursosHumanos</url-pattern>
+    </web-resource-collection>
+    <auth-constraint>
+        <role-name>recursosHumanos</role-name>
+    </auth-constraint>
+</security-constraint>
+
+	
+	
+	
+	
+	<login-config>
+		<auth-method>BASIC</auth-method> <!-- Método de autenticación básica -->
+		<realm-name>ApplicationRealm</realm-name> <!-- Nombre del realm de autenticación -->
+	</login-config>
+	<security-role>
+		<role-name>gerente</role-name> <!-- Definición del rol gerente -->
+	</security-role>
+	<security-role>
+		<role-name>recursosHumanos</role-name> <!-- Definición del rol recursosHumanos -->
+	</security-role>
+	
+</web-app>

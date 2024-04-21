@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cd target/server/bin
+
+./add-user.sh -a -u usr1 -p 123 -g recursosHumanos
+
+./add-user.sh -a -u usr2 -p 123 -g gerente
